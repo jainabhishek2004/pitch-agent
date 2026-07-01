@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useEveAgent } from "eve/react";
-import {useEffect} from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 // The generate_pitch_pdf tool returns a URL; the agent ends its reply with `PDF: <url>`.
 const PDF_RE = /(https?:\/\/\S+?\.pdf|\/generated\/[^\s)]+\.pdf)/i;
 
@@ -76,7 +77,7 @@ export default function Home() {
           <div className="results">
             <div className="panel">
               <h3>Agent</h3>
-              {summary ? <div className="agent-out">{summary}</div> : <div className="loading"><span className="spin" />Thinking…</div>}
+              {summary ? <div className="agent-out"><ReactMarkdown remarkPlugins={[remarkGfm]}>{summary}</ReactMarkdown></div> : <div className="loading"><span className="spin" />Thinking…</div>}
             </div>
 
             {pdfUrl && (
