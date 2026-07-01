@@ -2,8 +2,9 @@ import { withEve } from "eve/next";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // The generate_pitch_pdf tool renders with headless chromium on the server.
-  serverExternalPackages: ["@sparticuz/chromium", "puppeteer-core"],
+  // @react-pdf/renderer ships native-ish assets (yoga WASM); keep it external
+  // so Next/Turbopack doesn't try to bundle it.
+  serverExternalPackages: ["@react-pdf/renderer"],
 };
 
 // withEve ships the Next.js frontend + the Eve agent (agent/) as one project,

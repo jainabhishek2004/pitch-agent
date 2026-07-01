@@ -1,7 +1,6 @@
 import { defineTool } from "eve/tools";
 import { z } from "zod";
-import { buildHtml } from "../../lib/pitch-template.mjs";
-import { renderPdfBuffer } from "../../lib/render-pdf.mjs";
+import { renderPitchPdf } from "../../lib/pitch-pdf.mjs";
 import { savePdf } from "../../lib/storage.mjs";
 import { brand } from "../../lib/knowledge.mjs";
 
@@ -52,9 +51,8 @@ export default defineTool({
   inputSchema: Pitch,
   async execute(pitch) {
     const full = { ...pitch, meta: { preparedFor: `Prepared for ${pitch.client.name}`, brand: brand.company } };
-    const html = buildHtml(full, brand);
     const id = `${pitch.client.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "client"}-${Date.now()}`;
-    const buffer = await renderPdfBuffer(html);
+    const buffer = await renderPitchPdf(full);
     const url = await savePdf(buffer, id);
     return { ok: true, url, pages: 4, message: `Generated a 4-page pitch PDF for ${pitch.client.name}: ${url}` };
   },
