@@ -1,6 +1,6 @@
 # Industry playbooks — how Hyperion helps each type
 
-- **D2C Brand:** one live stock number across every channel (zero oversell), scanner warehouse, and a delivery + returns-QC layer so every order ships and every return is accounted for.
+- **D2C Brand:** one   live stock number across every channel (zero oversell), scanner warehouse, and a delivery + returns-QC layer so every order ships and every return is accounted for.
 - **B2B Manufacturer:** connect raw-material planning → vendor POs → production planning → QC approvals → batch tracking → finished-goods inventory in one execution layer, with agents chasing QC and vendors.
 - **Food Brand / Central Kitchen:** recipe/BOM + daily production planning + batch & expiry + hub replenishment + dispatch — cut wastage, stop stockouts at hubs, get real-time visibility.
 - **Distributor / Wholesaler:** one authoritative ledger with batch/serial, true landed cost & COGS, auto-reorder, and fulfilment behind any catalog or marketplace.
