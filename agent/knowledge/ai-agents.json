@@ -1,0 +1,19 @@
+{
+  "note": "Hyperion AI Agent library (PRD §11.9). Each agent: what it automates, its trigger, and its output.",
+  "agents": [
+    {"name": "Inventory Shortfall Agent", "automates": "Watches stock vs demand and flags shortfalls before they cause stockouts", "trigger": "Stock dips below safety level", "output": "Shortfall alert + suggested action", "bestFor": ["d2c", "distributor", "manufacturing"]},
+    {"name": "Replenishment Agent", "automates": "Drafts purchase/replenishment orders from reorder points and lead times", "trigger": "Reorder point hit", "output": "Draft PO", "bestFor": ["d2c", "distributor", "food"]},
+    {"name": "Production Planning Agent", "automates": "Builds daily production plans from demand and capacity", "trigger": "Daily / new demand", "output": "Production plan", "bestFor": ["manufacturing", "food", "central-kitchen"]},
+    {"name": "QC Approval Agent", "automates": "Tracks QC status, reminds the responsible team, escalates pending approvals", "trigger": "Batch submitted for QC or QC pending beyond SLA", "output": "QC status, pending alerts, escalation summary", "bestFor": ["manufacturing", "food"]},
+    {"name": "Vendor Follow-Up Agent", "automates": "Chases vendors on open POs and confirmations", "trigger": "PO open beyond SLA", "output": "Follow-up + status", "bestFor": ["manufacturing", "distributor"]},
+    {"name": "Dispatch Exception Agent", "automates": "Detects dispatch delays and routes exceptions", "trigger": "Dispatch SLA at risk", "output": "Exception alert + owner", "bestFor": ["d2c", "3pl", "food"]},
+    {"name": "Hub Replenishment Agent", "automates": "Plans hub-to-hub replenishment and transfers", "trigger": "Hub stock below threshold", "output": "Transfer plan", "bestFor": ["food", "central-kitchen", "hub-based"]},
+    {"name": "PO Appointment Agent", "automates": "Books and manages inbound dock appointments for POs", "trigger": "Inbound PO ready", "output": "Dock appointment", "bestFor": ["3pl", "warehousing-heavy"]},
+    {"name": "Daily MIS Agent", "automates": "Compiles and sends daily operations MIS", "trigger": "Daily schedule", "output": "MIS report", "bestFor": ["all", "erp-heavy"]},
+    {"name": "Compliance Agent", "automates": "Tracks compliance documents and expiries", "trigger": "Document due/expiring", "output": "Compliance alert", "bestFor": ["manufacturing", "food", "life-sciences"]},
+    {"name": "Order Exception Agent", "automates": "Catches stuck/failed orders across channels", "trigger": "Order stuck or failed", "output": "Exception alert + fix path", "bestFor": ["d2c", "quick-commerce", "marketplace"]},
+    {"name": "ERP Action Agent", "automates": "Turns ERP data into operational actions and follow-ups", "trigger": "ERP event/report", "output": "Action item", "bestFor": ["erp-heavy"]},
+    {"name": "Approval Routing Agent", "automates": "Routes approvals to the right people and chases slow ones", "trigger": "Approval pending", "output": "Routed approval + reminder", "bestFor": ["all", "erp-heavy"]},
+    {"name": "Client Follow-Up Agent", "automates": "Drafts and tracks client follow-ups", "trigger": "Follow-up due", "output": "Follow-up draft", "bestFor": ["all"]}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "note": "Company positioning (PRD §3, §12). Use this for the framing and the ERP-layer message.",
+  "whatHyperionDoes": "Hyperion is an AI-native operations platform that helps operationally complex businesses run their daily execution — inventory, warehouse, manufacturing, central kitchen, delivery and fleet — in one place, with AI agents that automate the repetitive work.",
+  "operatingModes": [
+    "A standalone operations platform.",
+    "A layer on top of an existing ERP (SAP, Oracle, Tally, Busy, Zoho, Ginesys, custom).",
+    "An AI-native workflow automation platform.",
+    "A control tower for operations visibility.",
+    "An AI agent layer that automates repetitive operational work."
+  ],
+  "erpPositioning": "Hyperion does NOT replace the ERP. The ERP stores transactions; Hyperion automates the daily execution on top of it — reporting, approvals, exceptions, follow-ups and field operations — so teams stop living in Excel, WhatsApp and phone calls.",
+  "industriesServed": ["D2C brands", "B2B manufacturing", "Food brands", "Central kitchens", "Hub-based businesses", "Quick-commerce suppliers", "Warehousing-heavy businesses", "3PL / contract logistics", "ERP-heavy enterprises"],
+  "knownSystems": ["SAP", "Oracle", "Tally", "Busy", "Zoho", "Ginesys", "Shopify", "Unicommerce", "EasyEcom", "Shiprocket", "Shipway", "Razorpay", "custom ERPs"],
+  "differentiators": ["AI-native", "Sits beside your ERP, not on top", "Operations App for field teams", "Pilot in weeks, not quarters", "Multi-tenant SaaS"]
+}

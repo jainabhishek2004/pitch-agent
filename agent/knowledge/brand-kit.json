@@ -1,0 +1,35 @@
+{
+  "company": "Hyperion",
+  "umbrella": "Hyperion by Gudz",
+  "primaryDomain": "gudz.in",
+  "primaryEmail": "hello@gudz.in",
+  "year": "2026",
+  "positioning": "An AI-native operations platform. Run it standalone, or as a layer on top of your existing ERP (SAP, Oracle, Tally, Busy, Zoho, Ginesys, custom).",
+  "proof": ["15K+ vehicles on platform", "50M+ deliveries orchestrated", "Live in 8 countries", "Pilot in weeks, not quarters"],
+  "colors": {
+    "ink": "#0B0E27",
+    "heroGradientFrom": "#0B0E27",
+    "heroGradientMid": "#1B1C52",
+    "heroGradientTo": "#3D3A8C",
+    "indigo": "#4F46E5",
+    "amber": "#F5A524",
+    "amberDeep": "#E8930F",
+    "pageBg": "#FFFFFF",
+    "headingInk": "#11142E",
+    "bodyGray": "#5B6172",
+    "mutedCaps": "#8A8FA3",
+    "cardBorder": "#E7E8EE",
+    "pillBg": "#EEEDFB",
+    "problemBg": "#FDF1EE",
+    "problemText": "#B23A1E",
+    "problemDot": "#E2643B",
+    "solutionBg": "#ECFBF3",
+    "solutionText": "#1A7A52",
+    "solutionDot": "#16A06A"
+  },
+  "fonts": {
+    "displayStack": "'Poppins', 'Segoe UI', system-ui, sans-serif",
+    "bodyStack": "'Inter', 'Segoe UI', system-ui, sans-serif",
+    "googleFontsHref": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+  }
+}

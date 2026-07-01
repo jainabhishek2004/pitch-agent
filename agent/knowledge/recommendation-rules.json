@@ -1,0 +1,35 @@
+{
+  "note": "SHARED CATALOG (PRD §3 classification + §14 recommendation rules). Single source of truth used by BOTH lib/classify.mjs (deterministic) and the Eve `classify_business` tool. Edit here to change classification + recommended stacks everywhere.",
+  "types": {
+    "d2c": ["d2c", "direct-to-consumer", "shopify", "ecommerce", "e-commerce", "online store", "online brand", "marketplace", "amazon", "flipkart", "consumer brand"],
+    "manufacturing": ["manufactur", "factory", "production", "raw material", "oem", "industrial", "plant", "assembly", "fabrication", "machining"],
+    "food": ["food", "fmcg", "beverage", "restaurant", "bakery", "dairy", "perishable", "frozen", "snack", "kitchen"],
+    "central-kitchen": ["central kitchen", "cloud kitchen", "commissary"],
+    "distributor": ["distribut", "wholesale", "trader", "dealer", "supplier", "procurement", "value engineering", "sourcing", "indirect material", "mro", "rate contract", "lubricant", "packaging"],
+    "quick-commerce": ["quick commerce", "q-commerce", "10 minute", "dark store", "instant delivery", "blinkit", "zepto", "instamart"],
+    "3pl": ["3pl", "logistics", "fulfillment", "fulfilment", "supply chain", "freight", "transport", "contract logistics", "last mile", "last-mile"],
+    "warehousing-heavy": ["warehouse", "warehousing", "storage", "distribution center", "distribution centre"],
+    "erp-heavy": ["sap", "oracle", "tally", "busy", "zoho", "ginesys", " erp"],
+    "trucking": ["fleet", "trucking", "taxi", "mobility", "fleet management"]
+  },
+  "labels": {
+    "d2c": "D2C Brand", "manufacturing": "B2B Manufacturer", "food": "Food Brand",
+    "central-kitchen": "Central Kitchen", "distributor": "Distributor / Wholesaler",
+    "quick-commerce": "Quick-Commerce Supplier", "3pl": "3PL / Contract Logistics",
+    "warehousing-heavy": "Warehousing-Heavy Business", "erp-heavy": "ERP-Heavy Enterprise",
+    "trucking": "Fleet Operator", "operations": "Operations Business"
+  },
+  "rules": {
+    "d2c": { "primary": "ims", "secondary": ["wms"], "expansion": ["order-delivery"], "aiLayer": ["Order Exception Agent", "Inventory Shortfall Agent", "Daily MIS Agent"] },
+    "manufacturing": { "primary": "manufacturing-ops", "secondary": ["ims", "wms"], "expansion": ["compliance"], "aiLayer": ["Production Planning Agent", "QC Approval Agent", "Vendor Follow-Up Agent"] },
+    "food": { "primary": "central-kitchen-ops", "secondary": ["ims"], "expansion": ["order-delivery"], "aiLayer": ["Replenishment Agent", "Hub Replenishment Agent", "Production Planning Agent"] },
+    "central-kitchen": { "primary": "central-kitchen-ops", "secondary": ["ims"], "expansion": ["order-delivery"], "aiLayer": ["Production Planning Agent", "Hub Replenishment Agent", "Dispatch Exception Agent"] },
+    "distributor": { "primary": "ims", "secondary": ["wms"], "expansion": ["order-delivery"], "aiLayer": ["Replenishment Agent", "Inventory Shortfall Agent", "Daily MIS Agent"] },
+    "quick-commerce": { "primary": "order-delivery", "secondary": ["ims"], "expansion": ["wms"], "aiLayer": ["Order Exception Agent", "Hub Replenishment Agent", "Dispatch Exception Agent"] },
+    "3pl": { "primary": "wms", "secondary": ["ims"], "expansion": ["order-delivery"], "aiLayer": ["PO Appointment Agent", "Dispatch Exception Agent", "Daily MIS Agent"] },
+    "warehousing-heavy": { "primary": "wms", "secondary": ["ims"], "expansion": ["control-tower"], "aiLayer": ["PO Appointment Agent", "Daily MIS Agent"] },
+    "erp-heavy": { "primary": "erp-integration-layer", "secondary": ["workflow-automation", "control-tower"], "expansion": ["ai-agent-layer"], "aiLayer": ["ERP Action Agent", "Daily MIS Agent", "Approval Routing Agent"] },
+    "trucking": { "primary": "fleet", "secondary": ["ims"], "expansion": ["order-delivery"], "aiLayer": ["Daily MIS Agent", "Dispatch Exception Agent"] },
+    "operations": { "primary": "control-tower", "secondary": ["workflow-automation"], "expansion": ["ims"], "aiLayer": ["Daily MIS Agent", "Approval Routing Agent"] }
+  }
+}

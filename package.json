@@ -1,0 +1,31 @@
+{
+  "name": "hyperion-pitch-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Hyperion Client-to-Pitch — Next.js web app powered by an Eve agent",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "agent:dev": "eve dev",
+    "pitch": "node scripts/generate.mjs"
+  },
+  "dependencies": {
+    "@sparticuz/chromium": "^131.0.1",
+    "@vercel/blob": "^0.27.0",
+    "ai": "^7.0.0",
+    "eve": "^0.17.1",
+    "next": "^16.0.0",
+    "puppeteer-core": "^23.11.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,14 @@
+node_modules
+.next
+.eve
+out
+public/generated
+.env
+.env*.local
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+.vercel
+.env*
+.output

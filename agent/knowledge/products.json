@@ -1,0 +1,135 @@
+{
+  "note": "Hyperion product catalog. Products with source 'brochure' are fully detailed from real brochures (source of truth). Products with source 'prd' are described from the PRD and should get a brochure before heavy pitching.",
+  "products": [
+    {
+      "id": "wms",
+      "name": "Warehouse Management (WMS)",
+      "category": "Warehouse",
+      "source": "brochure",
+      "bestFor": ["3pl", "d2c", "distributor", "oem", "warehousing-heavy"],
+      "solves": "Paper GRN, no bin strategy, high mispick, silent damages, untrustworthy book stock",
+      "how": "Scanner-first GRN with live variance, ABC zoning + guided putaway, wave/batch/zone picks (mispick <0.2%), photo-logged damages, daily cycle counts (>99% accuracy), dock SLA, cold-chain alerts, offline-capable Android app",
+      "keyFeatures": ["Scanner GRN", "Guided putaway", "Wave/zone picking", "Cycle counts", "Dock & SLA", "Cold chain alerts", "Vendor scorecards"]
+    },
+    {
+      "id": "ims",
+      "name": "Inventory Management (IMS)",
+      "category": "Inventory",
+      "source": "brochure",
+      "bestFor": ["d2c", "distributor", "oem", "food", "manufacturing"],
+      "solves": "Four systems with four stock numbers, marketplace oversell, expiries found at audit, fudged landed cost/COGS, gut-feel reorder",
+      "how": "One authoritative multi-node ledger, real-time reservations (zero oversell), expiry alerts 90 days out, batch-accurate landed cost/COGS/margin, auto-draft POs from ROP & vendor score, reconciliation & audit trail",
+      "keyFeatures": ["Multi-node ledger", "Real-time reservations", "Batch/serial & FEFO", "Landed cost & COGS", "Reorder engine", "Dead-stock & ageing", "Reconciliation"]
+    },
+    {
+      "id": "order-delivery",
+      "name": "Order & Delivery Management",
+      "category": "Delivery",
+      "source": "brochure",
+      "bestFor": ["d2c", "quick-commerce", "marketplace", "food", "3pl"],
+      "solves": "One-size delivery, slots without capacity checks, quick-commerce on spreadsheets, returns without QC",
+      "how": "Four delivery modes per category/pincode (On-demand, Slot, Quick-com, Try & Buy), capacity-aware slot engine, rider app (OTP/photo-POD/COD), return QC, COD recon & settlement, courier orchestration & OMS sync",
+      "keyFeatures": ["Unified order intake", "Mode router", "Slot engine", "Rider app", "Return QC", "COD & settlement", "Courier orchestration"]
+    },
+    {
+      "id": "fleet",
+      "name": "Fleet Management & MIS",
+      "category": "Fleet",
+      "source": "brochure",
+      "bestFor": ["trucking", "mobility", "manufacturing", "3pl"],
+      "solves": "Docs/challans on WhatsApp, paper attendance/earnings, late MIS, no cost-per-km view",
+      "how": "One ledger for every vehicle/driver/ticket, ticket->quotation->work->close, auto-settled earnings, live MIS with photo-backed QC, utilisation/cost-per-km/SLA in real time",
+      "keyFeatures": ["Trip & route", "Maintenance", "Challan sync", "Earnings engine", "MIS & SLA", "Cost per km"]
+    },
+    {
+      "id": "rental",
+      "name": "Rental Management for Fleets",
+      "category": "Rental",
+      "source": "brochure",
+      "bestFor": ["fleet-lessor", "rental-platform", "corporate-leasing"],
+      "solves": "Off-platform deposits, scattered handover photos, verbal KYC, no asset hand-pass history",
+      "how": "Razorpay-backed deposit ledger with auto-debits, photo-backed handover & return QC, KYC + Aadhaar e-sign vault, configurable plans, full hand-pass history, damage debits with evidence",
+      "keyFeatures": ["KYC/DigiLocker", "Deposits", "Handover QC", "Damage debits", "e-Sign", "Asset history"]
+    },
+    {
+      "id": "manufacturing-ops",
+      "name": "Manufacturing Operations",
+      "category": "Manufacturing",
+      "source": "prd",
+      "bestFor": ["manufacturing"],
+      "solves": "Raw-material planning gaps, vendor purchase delays, manual production planning, QC approval delays, batch tracking issues, finished-goods gaps",
+      "how": "Connects raw-material planning, vendor POs, production planning, QC approvals, batch tracking and finished-goods inventory into one execution layer",
+      "keyFeatures": ["Production planning", "Raw-material planning", "Vendor POs", "QC workflow", "Batch tracking", "Finished goods"]
+    },
+    {
+      "id": "central-kitchen-ops",
+      "name": "Central Kitchen Operations",
+      "category": "Food",
+      "source": "prd",
+      "bestFor": ["food", "central-kitchen", "hub-based"],
+      "solves": "Daily production planning, recipe/BOM management, hub allocation, batch movement, wastage, expiry, hub replenishment, transfer planning, dispatch control",
+      "how": "Connects recipe/BOM, daily production planning, hub-wise allocation, batch & expiry tracking, transfer planning and dispatch into one operating layer",
+      "keyFeatures": ["Recipe/BOM", "Production planning", "Hub inventory", "Batch & expiry", "Transfer planning", "Dispatch control"]
+    },
+    {
+      "id": "store-fulfillment",
+      "name": "Store Fulfillment",
+      "category": "Retail",
+      "source": "prd",
+      "bestFor": ["d2c", "retail", "marketplace"],
+      "solves": "Multi-channel order visibility, ship-from-store, retail stock allocation",
+      "how": "Routes orders across stores and warehouses, ship-from-store, allocation and fulfilment visibility",
+      "keyFeatures": ["Ship-from-store", "Allocation", "Multi-channel visibility"]
+    },
+    {
+      "id": "workflow-automation",
+      "name": "Workflow Automation",
+      "category": "Automation",
+      "source": "prd",
+      "bestFor": ["all"],
+      "solves": "Manual approvals, exceptions discovered late, routine ops work done by hand",
+      "how": "Always-on rules and automations across operations: alerts, escalations, approval routing, exception handling",
+      "keyFeatures": ["Alert engine", "Approval routing", "Escalations", "Exception handling"]
+    },
+    {
+      "id": "compliance",
+      "name": "Compliance Management",
+      "category": "Compliance",
+      "source": "prd",
+      "bestFor": ["manufacturing", "food", "life-sciences"],
+      "solves": "Compliance documentation done by hand, audit trails missing",
+      "how": "Digitises compliance documentation, audit trails and approvals",
+      "keyFeatures": ["Compliance docs", "Audit trail", "Approvals"]
+    },
+    {
+      "id": "control-tower",
+      "name": "Control Tower",
+      "category": "Visibility",
+      "source": "prd",
+      "bestFor": ["all", "erp-heavy", "3pl"],
+      "solves": "Fragmented operational visibility; reports exist but action items are manual",
+      "how": "A single operations command view across inventory, warehouse, delivery and fleet — live KPIs, exceptions and SLAs",
+      "keyFeatures": ["Live KPIs", "Exceptions", "SLA tracking", "Cross-module visibility"]
+    },
+    {
+      "id": "erp-integration-layer",
+      "name": "ERP Integration Layer",
+      "category": "Integration",
+      "source": "prd",
+      "bestFor": ["erp-heavy"],
+      "solves": "ERP stores transactions but does not automate daily execution; teams still use Excel, WhatsApp and calls",
+      "how": "Sits on top of SAP/Oracle/Tally/Busy/Zoho/Ginesys/custom ERP as an AI-native execution layer — automates execution, reporting, approvals, exceptions and follow-ups without replacing the ERP",
+      "keyFeatures": ["ERP sync", "Execution layer", "Approval routing", "Daily MIS", "Exception management"]
+    },
+    {
+      "id": "ai-agent-layer",
+      "name": "AI Agent Layer",
+      "category": "AI",
+      "source": "prd",
+      "bestFor": ["all"],
+      "solves": "Repetitive operational work that waits on humans",
+      "how": "A layer of AI agents that watch operations and act — replenishment, QC follow-up, dispatch exceptions, daily MIS, approval routing and more",
+      "keyFeatures": ["Operational AI agents", "Triggers & actions", "Exception automation"]
+    }
+  ]
+}
