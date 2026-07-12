@@ -10,10 +10,13 @@ import { api } from "../convex/_generated/api.js";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const readJson = (p) => JSON.parse(readFileSync(resolve(root, p), "utf8"));
 
-// Read the Convex deployment URL straight from .env.local (no dotenv needed).
-const env = readFileSync(resolve(root, ".env.local"), "utf8");
-const url = env.match(/^NEXT_PUBLIC_CONVEX_URL=(.+)$/m)?.[1]?.trim();
-if (!url) throw new Error("NEXT_PUBLIC_CONVEX_URL missing in .env.local — is `npx convex dev` set up?");
+// Target from env (e.g. prod) if set, else read the dev URL from .env.local.
+let url = process.env.NEXT_PUBLIC_CONVEX_URL;
+if (!url) {
+  const env = readFileSync(resolve(root, ".env.local"), "utf8");
+  url = env.match(/^NEXT_PUBLIC_CONVEX_URL=(.+)$/m)?.[1]?.trim();
+}
+if (!url) throw new Error("NEXT_PUBLIC_CONVEX_URL missing (set env var or .env.local).");
 
 // --- reshape the JSON to match the Convex tables (id -> slug, flatten rules) ---
 const products = readJson("agent/knowledge/products.json").products.map((p) => ({
