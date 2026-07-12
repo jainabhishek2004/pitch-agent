@@ -1,7 +1,6 @@
 import { defineTool } from "eve/tools";
 import { z } from "zod";
-import { classify } from "../../lib/classify.mjs";
-import { productById, painsForType } from "../../lib/knowledge.mjs";
+import { loadKB } from "../../lib/knowledge.mjs";
 
 // Grounds the model: runs the SHARED recommendation rules (PRD §3/§14) over the company text
 // and returns the rule-based classification + recommended stack + likely pains.
@@ -12,8 +11,9 @@ export default defineTool({
     text: z.string().describe("All known text about the company: business-card text + website research combined."),
   }),
   async execute({ text }) {
-    const cls = classify(text);
-    const name = (id: string) => productById(id)?.name || id;
+    const kb = await loadKB();
+    const cls = kb.classify(text);
+    const name = (id: string) => kb.productById(id)?.name || id;
     return {
       classification: cls.classification,
       primaryType: cls.label,
@@ -24,7 +24,7 @@ export default defineTool({
         expansion: cls.rule.expansion.map(name),
         aiLayer: cls.rule.aiLayer,
       },
-      likelyPains: painsForType(cls.primary).slice(0, 6).map((p) => ({ text: p.text, category: p.category, impact: p.impact })),
+      likelyPains: kb.painsForType(cls.primary).slice(0, 6).map((p: any) => ({ text: p.text, category: p.category, impact: p.impact })),
     };
   },
 });

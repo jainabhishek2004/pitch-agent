@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { useEveAgent } from "eve/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -45,7 +46,10 @@ export default function Home() {
   return (
     <>
       <div className="top">
-        <div className="brand"><span className="diamond" /><span>HYPERION<span className="wm-dot">.</span></span></div>
+        <div className="tophead">
+          <div className="brand"><span className="diamond" /><span>HYPERION<span className="wm-dot">.</span></span></div>
+          <Link href="/admin" className="navlink">Knowledge Base →</Link>
+        </div>
         <h1>Pitch Studio</h1>
         <p>Drop in a business card and the client&apos;s website. The Eve agent researches them, finds their operational pains, picks the right Hyperion stack + AI agents, and builds a branded pitch PDF.</p>
       </div>
