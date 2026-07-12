@@ -45,4 +45,13 @@ export default defineSchema({
     expansion: v.array(v.string()),
     aiLayer: v.array(v.string()), // agent names
   }).index("by_key", ["key"]),
+
+  // A record of every pitch the team generates (the "Generations" library).
+  generations: defineTable({
+    businessCard: v.string(),
+    website: v.string(),
+    pitch: v.string(), // the on-screen summary
+    followupEmail: v.string(),
+    pdfUrl: v.string(),
+  }),
 });

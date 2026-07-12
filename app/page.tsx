@@ -1,11 +1,23 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useEveAgent } from "eve/react";
+import { useMutation } from "convex/react";
+import { api } from "../convex/_generated/api";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 // The generate_pitch_pdf tool returns a URL; the agent ends its reply with `PDF: <url>`.
-const PDF_RE = /(https?:\/\/\S+?\.pdf|\/generated\/[^\s)]+\.pdf)/i;
+// Capture whatever URL follows "PDF:" (Convex storage URLs don't end in .pdf).
+const PDF_RE = /PDF:\s*(https?:\/\/\S+|\/\S+)/i;
+
+// Split the agent's reply into the pitch summary and the follow-up email.
+function splitPitchEmail(text: string) {
+  const m = text.match(/\n\s*#{0,6}\s*\*{0,2}\s*follow[-\s]?up email[^\n]*/i);
+  if (m && m.index !== undefined) {
+    return { pitch: text.slice(0, m.index).trim(), email: text.slice(m.index).trim() };
+  }
+  return { pitch: text.trim(), email: "" };
+}
 
 export default function Home() {
   const [cardText, setCardText] = useState("");
@@ -22,6 +34,17 @@ export default function Home() {
     .trim();
   const pdfUrl = assistantText.match(PDF_RE)?.[1] ?? null;
   const summary = assistantText.replace(/PDF:\s*\S+/i, "").trim();
+
+  // Save each finished generation to the Convex library (once per PDF).
+  const saveGen = useMutation(api.generations.save);
+  const savedRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (agent.status !== "ready" || !pdfUrl || !summary) return;
+    if (savedRef.current === pdfUrl) return;
+    savedRef.current = pdfUrl;
+    const { pitch, email } = splitPitchEmail(summary);
+    saveGen({ businessCard: cardText, website, pitch, followupEmail: email, pdfUrl }).catch(() => {});
+  }, [agent.status, pdfUrl, summary, cardText, website, saveGen]);
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -48,7 +71,10 @@ export default function Home() {
       <div className="top">
         <div className="tophead">
           <div className="brand"><span className="diamond" /><span>HYPERION<span className="wm-dot">.</span></span></div>
-          <Link href="/admin" className="navlink">Knowledge Base →</Link>
+          <div className="navlinks">
+            <Link href="/generations" className="navlink">Generations →</Link>
+            <Link href="/admin" className="navlink">Knowledge Base →</Link>
+          </div>
         </div>
         <h1>Pitch Studio</h1>
         <p>Drop in a business card and the client&apos;s website. The Eve agent researches them, finds their operational pains, picks the right Hyperion stack + AI agents, and builds a branded pitch PDF.</p>

@@ -9,6 +9,8 @@
  */
 
 import type * as auth from "../auth.js";
+import type * as files from "../files.js";
+import type * as generations from "../generations.js";
 import type * as http from "../http.js";
 import type * as kb from "../kb.js";
 
@@ -20,6 +22,8 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
+  files: typeof files;
+  generations: typeof generations;
   http: typeof http;
   kb: typeof kb;
 }>;

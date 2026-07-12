@@ -41,8 +41,8 @@ function LoginScreen() {
     <>
       <div className="top">
         <div className="brand"><span className="diamond" /><span>HYPERION<span className="wm-dot">.</span></span></div>
-        <h1>Knowledge Base — Admin</h1>
-        <p>Sign in to edit the pitch agent&apos;s knowledge base.</p>
+        <h1>Hyperion — Admin</h1>
+        <p>Sign in to continue.</p>
       </div>
       <div className="wrap">
         <div className="card" style={{ maxWidth: 420, margin: "0 auto" }}>
