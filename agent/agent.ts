@@ -1,11 +1,11 @@
 import { defineAgent } from "eve";
 
-// Model resolves through the Vercel AI Gateway. It uses your team's OpenAI key
-// (added as BYOK in the gateway settings), so tokens are billed to your OpenAI
-// account. Swap the string for any model your key supports — e.g. "openai/gpt-4o",
-// "openai/gpt-4.1-mini" (cheaper), or back to "anthropic/claude-sonnet-4.6".
+// Model resolves through the Vercel AI Gateway.
+// TEMP (testing on free credit): gpt-4o-mini has a higher free-tier rate limit so
+// a full pitch completes. Switch back to "openai/gpt-4.1" once BYOK / paid credits
+// are set for best quality.
 export default defineAgent({
-  model: "openai/gpt-4.1",
+  model: "openai/gpt-4o-mini",
   build: {
     // Ship @react-pdf/renderer UNBUNDLED in server/node_modules so its runtime
     // assets (yoga-layout WASM + fontkit AFM font metrics) survive Nitro's
