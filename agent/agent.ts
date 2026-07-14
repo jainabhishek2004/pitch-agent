@@ -1,11 +1,11 @@
 import { defineAgent } from "eve";
 
 // Model resolves through the Vercel AI Gateway.
-// TEMP (testing on free credit): gpt-4o-mini has a higher free-tier rate limit so
-// a full pitch completes. Switch back to "openai/gpt-4.1" once BYOK / paid credits
-// are set for best quality.
+// deepseek-v3.2: very cheap, supports reasoning + tool use. If it ever skips
+// generate_pitch_pdf, fall back to "openai/gpt-4.1-mini" (most reliable tool-caller)
+// or "openai/gpt-4.1" (max quality). Alt cheap: "google/gemini-2.5-flash".
 export default defineAgent({
-  model: "openai/gpt-4o-mini",
+  model: "deepseek/deepseek-v3.2",
   build: {
     // Ship @react-pdf/renderer UNBUNDLED in server/node_modules so its runtime
     // assets (yoga-layout WASM + fontkit AFM font metrics) survive Nitro's

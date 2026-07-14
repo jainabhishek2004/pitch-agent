@@ -39,11 +39,12 @@ export default function Home() {
   const saveGen = useMutation(api.generations.save);
   const savedRef = useRef<string | null>(null);
   useEffect(() => {
-    if (agent.status !== "ready" || !pdfUrl || !summary) return;
-    if (savedRef.current === pdfUrl) return;
-    savedRef.current = pdfUrl;
+    if (agent.status !== "ready" || !summary) return;
+    const key = pdfUrl || summary.slice(0, 80); // dedupe per generation
+    if (savedRef.current === key) return;
+    savedRef.current = key;
     const { pitch, email } = splitPitchEmail(summary);
-    saveGen({ businessCard: cardText, website, pitch, followupEmail: email, pdfUrl }).catch(() => {});
+    saveGen({ businessCard: cardText, website, pitch, followupEmail: email, pdfUrl: pdfUrl || "" }).catch(() => {});
   }, [agent.status, pdfUrl, summary, cardText, website, saveGen]);
 
   function submit(e: React.FormEvent) {
